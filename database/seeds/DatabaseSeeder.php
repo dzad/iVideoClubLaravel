@@ -2,7 +2,9 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use App\Movie;
+use App\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -179,6 +181,8 @@ class DatabaseSeeder extends Seeder
     {
         self::seedCatalog();
         $this->command->info('Tabla catálog inicializada con datos!');
+        self::seedUsers();
+        $this->command->info('Tabla usuarios inicializada con datos!');
     }
 
     private function seedCatalog(){
@@ -194,5 +198,14 @@ class DatabaseSeeder extends Seeder
             $p->synopsis = $pelicula['synopsis'];
             $p->save();
         }
+    }
+
+    private function seedUsers(){
+        DB::table('users')->delete();
+        $user1 = new User();
+        $user1->name = "user1";
+        $user1->email = "email@email.com";
+        $user1->password = Hash::make("123");
+        $user1->save();
     }
 }
