@@ -17,30 +17,32 @@
               @csrf
               <div class="form-group">
                  <label for="title">Título</label>
-                 <input type="text" name="title" id="title" class="form-control">
+                 <input type="text" name="title" id="title" value="{{$pelicula->title}}" class="form-control">
               </div>
 
               <div class="form-group">
                  {{-- TODO: Completa el input para el año --}}
                  <label for="year">Año</label>
-                 <input type="text" name="year" id="year" value="" class="form-control">
+                 <input type="text" name="year" id="year" value="{{$pelicula->year}}" class="form-control">
               </div>
 
               <div class="form-group">
                  {{-- TODO: Completa el input para el director --}}
                  <label for="year">Director</label>
-                 <input type="text" name="director" id="director" value="" class="form-control">
+                 <input type="text" name="director" id="director" value="{{$pelicula->director}}" class="form-control">
               </div>
 
               <div class="form-group">
                  {{-- TODO: Completa el input para el poster --}}
                  <label for="year">Poster</label>
-                 <input type="text" name="poster" id="poster" value="" class="form-control">
+                 <input type="text" name="poster" id="poster" value="{{$pelicula->poster}}" class="form-control">
               </div>
 
               <div class="form-group">
                  <label for="synopsis">Resumen</label>
-                 <textarea name="synopsis" id="synopsis" class="form-control" rows="3"></textarea>
+                 <textarea name="synopsis" id="synopsis" class="form-control" rows="3">
+                   {{$pelicula->synopsis}}
+                 </textarea>
               </div>
 
               <div class="form-group text-center">
