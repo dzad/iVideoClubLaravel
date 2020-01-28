@@ -6,7 +6,7 @@
 
     <div class="col-sm-4">
 
-        <img src="{{$pelicula->poster}}" />
+        <img src="{{$pelicula->poster}}" class="img-fluid"/>
 
     </div>
     <div class="col-sm-8">

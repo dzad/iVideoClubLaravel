@@ -1,7 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-
   <div class="row">
 
     @foreach( $arrayPeliculas as $pelicula )

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Movie;
+use Alert;
 
 class CatalogController extends Controller
 {
@@ -36,7 +37,7 @@ class CatalogController extends Controller
     $movie->poster = $request->input('poster');
     $movie->rented = false;
     $movie->save();
-    return redirect()->action('CatalogController@getIndex');
+    return redirect()->action('CatalogController@getIndex')->with(Alert::success('Success', 'La película se ha guardado correctamente'));
   }
 
   function putEdit(Request $request, $id){
@@ -47,6 +48,7 @@ class CatalogController extends Controller
     $movie->synopsis = $request->input('synopsis');
     $movie->poster = $request->input('poster');
     $movie->save();
-    return redirect()->action('CatalogController@getShow', ['id' => $id]);
+
+    return redirect()->action('CatalogController@getShow', ['id' => $id])->with(Alert::success('Success', 'La película se ha modificado correctamente'));
   }
 }
