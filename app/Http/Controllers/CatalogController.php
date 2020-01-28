@@ -51,4 +51,27 @@ class CatalogController extends Controller
 
     return redirect()->action('CatalogController@getShow', ['id' => $id])->with(Alert::success('Success', 'La película se ha modificado correctamente'));
   }
+
+  function putRent(Request $request, $id){
+    $movie = Movie::findOrFail($id);
+    $movie->rented = true;
+    $movie->save();
+
+    return redirect()->action('CatalogController@getShow', ['id' => $id])->with(Alert::success('Success', 'La película se ha alquilado'));
+  }
+
+  function putReturn(Request $request, $id){
+    $movie = Movie::findOrFail($id);
+    $movie->rented = false;
+    $movie->save();
+
+    return redirect()->action('CatalogController@getShow', ['id' => $id])->with(Alert::success('Success', 'La película ha sido devuelto '));
+  }
+
+  function deleteMovie(Request $request, $id){
+    $movie = Movie::findOrFail($id);
+    $movie->delete();
+
+    return redirect()->action('CatalogController@getIndex')->with(Alert::success('Success', 'La película se ha borrado'));
+  }
 }
